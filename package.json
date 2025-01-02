@@ -1,0 +1,19 @@
+{
+  "name": "smartassistantrn",
+  "version": "1.0.0",
+  "description": "A React Native library for integrating an OpenAI-powered chatbot assistant into your app. Offers features for navigation guidance, user attribute access, and dynamic button generation to enhance app usability.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sowe-tech/SmartAssistantRN.git"
+  },
+  "author": "sowe.tech",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sowe-tech/SmartAssistantRN/issues"
+  },
+  "homepage": "https://github.com/sowe-tech/SmartAssistantRN#readme"
+}
