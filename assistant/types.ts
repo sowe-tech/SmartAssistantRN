@@ -1,4 +1,5 @@
 export type AssistantOptions = {
+    language?: string;
     name: string;
     avatar?: string;
     apiKey: string;

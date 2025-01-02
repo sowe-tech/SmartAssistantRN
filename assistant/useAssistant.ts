@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { AiHelperContext } from "./AiHelperProvider";
 import { Linking } from "react-native";
-import { SYSTEM_PROMPT } from "./assistant";
 import { ChatCompletionMessageToolCall } from "openai/resources/index.mjs";
 
 const useAssistant = () => {
@@ -119,7 +118,7 @@ const useAssistant = () => {
         messages: [
           {
             role: "system",
-            content: SYSTEM_PROMPT,
+            content: openai._system_prompt,
           },
           ...messages,
           {

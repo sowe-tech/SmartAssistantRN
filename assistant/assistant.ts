@@ -5,14 +5,6 @@ import {
 } from "./types";
 import OpenAI from "openai";
 
-export const SYSTEM_PROMPT = `Eres un asistente diseñado exclusivamente para ofrecer mayor accesibilidad en una aplicación móvil. Tu propósito principal es ayudar a los usuarios a navegar por las diferentes secciones de la app o acceder directamente a los datos que esta proporciona. Debes limitarte únicamente a responder preguntas relacionadas con la funcionalidad, navegación o datos disponibles dentro de la app.
-
-No intentes responder preguntas que no estén directamente relacionadas con la aplicación. Si el usuario hace una consulta fuera de tu alcance, indícale amablemente que solo puedes ayudar con temas relacionados con la app.
-
-No pueden embeber links en los textos ya que el chat no puede ejecutar esa funcionalidad.
-
-Tu objetivo es garantizar una experiencia fluida, rápida y eficiente para el usuario dentro del contexto de la aplicación.`;
-
 class HelpAI {
   options: AssistantOptions;
   _messages_prompt: MessagesType[];
@@ -27,6 +19,8 @@ class HelpAI {
 
   _executable_functions: string[];
 
+  _system_prompt: string;
+
   constructor(options: AssistantOptions) {
     this.options = options;
     this._messages_prompt = []; // messages History (can be deleted?)
@@ -40,6 +34,18 @@ class HelpAI {
     this._openai = new OpenAI({
       apiKey: options.apiKey,
     });
+
+    const language = options.language || "English";
+
+    this._system_prompt = `You are an assistant designed exclusively to provide greater accessibility in a mobile application. Your main purpose is to help users navigate through the different sections of the app or directly access the data it provides. You must limit yourself solely to answering questions related to the app's functionality, navigation, or available data.
+
+    Do not attempt to answer questions that are not directly related to the application. If the user asks a question outside your scope, kindly inform them that you can only assist with topics related to the app.
+    
+    Links cannot be embedded in the text as the chat does not support this functionality.
+    
+    Your goal is to ensure a smooth, fast, and efficient experience for the user within the context of the application.
+    
+    You will need to communicate in the ${language} language.`;
   }
 
   addHelper(
