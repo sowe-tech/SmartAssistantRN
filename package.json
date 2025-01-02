@@ -1,6 +1,6 @@
 {
   "name": "react-native-smart-assistant",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "A React Native library for integrating an OpenAI-powered chatbot assistant into your app. Offers features for navigation guidance, user attribute access, and dynamic button generation to enhance app usability.",
   "main": "index.ts",
   "scripts": {
@@ -15,12 +15,27 @@
   "bugs": {
     "url": "https://github.com/sowe-tech/SmartAssistantRN/issues"
   },
-  "homepage": "https://github.com/sowe-tech/SmartAssistantRN#readme",
+  "keywords": [
+    "react-native",
+    "react",
+    "assistant",
+    "chatbot",
+    "openai",
+    "gpt",
+    "ai",
+    "smart",
+    "smart navigation",
+    "ai-routing"
+  ],
+  "homepage": "sowe.tech",
   "dependencies": {
-    "@expo/vector-icons": "^14.0.4",
-    "expo-image": "^2.0.3",
-    "openai": "^4.77.0",
-    "react-native": "^0.76.5",
-    "react-native-safe-area-context": "^5.0.0"
+    "openai": "^4.77.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-safe-area-context": "*",
+    "@expo/vector-icons": "*",
+    "expo-image": "*"
   }
 }

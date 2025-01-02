@@ -1,0 +1,6 @@
+example/
+*.log
+*.tsbuildinfo
+__tests__/
+coverage/
+dist/**/*.map
