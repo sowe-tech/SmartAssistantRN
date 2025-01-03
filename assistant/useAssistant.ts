@@ -108,7 +108,9 @@ const useAssistant = () => {
     if (!openai) {
       return console.error("Assistant is not set correctly");
     }
+    const newMessages = [...messages, { role: "user", content: message }];
 
+    setMessages(newMessages);
     setButtons(null);
 
     try {
@@ -139,17 +141,12 @@ const useAssistant = () => {
         return completion.choices[0].message.content;
       }
 
-      setMessages([
-        ...messages,
-        {
-          role: "user",
-          content: message,
-        },
-        {
-          role: "assistant",
-          content: completion.choices[0].message.content,
-        },
-      ]);
+      newMessages.push({
+        role: "assistant",
+        content: completion.choices[0].message.content,
+      });
+
+      setMessages(newMessages);
 
       return completion.choices[0].message.content;
     } catch (error) {

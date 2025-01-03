@@ -40,9 +40,9 @@ const ChatModal = () => {
       return;
     }
     setIsLoading(true);
+    setMessage("");
     await handleMessage(message);
     setIsLoading(false);
-    setMessage("");
   };
 
   const handleCloseChat = () => {
