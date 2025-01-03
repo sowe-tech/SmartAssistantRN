@@ -111,4 +111,26 @@ handleOpenChat();
 // Show or hide the chat bubble
 showChatBubble();
 hideChatBubble();
+```
+
+## Actions
+The AI assistant can identify when a user needs to execute a predefined function, such as contacting support or logging out, and creates a button for the user.
+
+### Example Usage
+
+```javascript
+assistant.addHelper(
+  "contcatHuman", // unique function name
+  () => {
+    // Logic to contact support
+    Alert.alert(
+      "Hello"
+    );
+  },
+  "Function contact a human", // description of the function
+);
+```
+
+![image](https://github.com/user-attachments/assets/f39cd00c-f6f7-447e-beb9-160b04568256)
+
 
