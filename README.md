@@ -28,8 +28,8 @@ import {Assistant, , AiHelperProvider} from 'react-native-smart-assistant';
 
 ```javascript
 const assistant = new HelpAI({
-  name:  '<Company name>',
-  avatar: require('<Company logo>'),
+  name:  '<Assistant name>',
+  avatar: require('<Assistant avatar>'),
   apiKey: '<Open ai key>',
 });
 ```
