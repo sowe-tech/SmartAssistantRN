@@ -131,6 +131,6 @@ assistant.addHelper(
 );
 ```
 
-![image](https://github.com/user-attachments/assets/f39cd00c-f6f7-447e-beb9-160b04568256)
+<img src="https://github.com/user-attachments/assets/f39cd00c-f6f7-447e-beb9-160b04568256" alt="Mobile Phone Image" width="300" />
 
 
