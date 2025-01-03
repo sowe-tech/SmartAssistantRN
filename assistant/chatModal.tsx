@@ -10,7 +10,7 @@ import {
   Keyboard,
   Text,
   ActivityIndicator,
-  TextInput
+  TextInput,
 } from "react-native";
 import { AiHelperContext } from "./AiHelperProvider";
 import useAssistant from "./useAssistant";
@@ -32,6 +32,8 @@ const ChatModal = () => {
   const { messages, buttons, assistant, isChatOpen, setIsChatOpen } =
     useContext(AiHelperContext);
   const scrollViewRef = useRef<ScrollView>(null);
+
+  const theme = assistant?._theme.chat;
 
   const handleSendMessage = async () => {
     if (isLoading) {
@@ -97,14 +99,41 @@ const ChatModal = () => {
     };
   }, []);
 
+  const messageBubbleLeft = {
+    ...styles.messageBubbuleLeft,
+    backgroundColor: theme?.messageBubbleLeft,
+  };
+
+  const messageBubbleRight = {
+    ...styles.messageBubbuleRight,
+    backgroundColor: theme?.messageBubbleRight,
+  };
+
+  const leftText = {
+    ...styles.text,
+    color: theme?.textLeft,
+  };
+
+  const rightText = {
+    ...styles.textRight,
+    color: theme?.textRight,
+  };
+
   return (
     <Animated.View
-      style={[styles.container, { transform: [{ translateY }], opacity }]}
+      style={[
+        styles.container,
+        {
+          transform: [{ translateY }],
+          opacity,
+          backgroundColor: theme?.header,
+        },
+      ]}
     >
       <SafeAreaView style={{ flex: 1 }}>
         <View
           style={{
-            backgroundColor: "#2f2f2f",
+            backgroundColor: theme?.header,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
@@ -121,7 +150,9 @@ const ChatModal = () => {
           </View>
 
           <View style={styles.assistantStatus}>
-            <Text style={styles.assistantName}>{assistant?.options.name}</Text>
+            <Text style={[styles.assistantName, { color: theme?.headerText }]}>
+              {assistant?.options.name}
+            </Text>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
             >
@@ -130,11 +161,15 @@ const ChatModal = () => {
                   width: 8,
                   height: 8,
                   borderRadius: 4,
-                  backgroundColor: "#FFFFFF",
+                  backgroundColor: theme?.headerText,
                 }}
               />
               <Text
-                style={{ fontSize: 12, color: "#FFFFFF", fontWeight: "bold" }}
+                style={{
+                  fontSize: 12,
+                  color: theme?.headerText,
+                  fontWeight: "bold",
+                }}
               >
                 Online
               </Text>
@@ -145,7 +180,7 @@ const ChatModal = () => {
             style={[styles.closeIcon]}
             onPress={handleCloseChat}
           >
-            <Ionicons name="close" size={32} color={"#ffffff"} />
+            <Ionicons name="close" size={32} color={theme?.headerText} />
           </TouchableOpacity>
         </View>
 
@@ -159,15 +194,11 @@ const ChatModal = () => {
           {messages.map((m) => (
             <View
               style={
-                m.role == "assistant"
-                  ? styles.messageBubbuleLeft
-                  : styles.messageBubbuleRight
+                m.role == "assistant" ? messageBubbleLeft : messageBubbleRight
               }
             >
               {m.content && (
-                <Text
-                  style={m.role == "assistant" ? styles.text : styles.textRight}
-                >
+                <Text style={m.role == "assistant" ? leftText : rightText}>
                   {m.content as string}
                 </Text>
               )}
@@ -175,8 +206,8 @@ const ChatModal = () => {
           ))}
 
           {isLoading && (
-            <View style={styles.messageBubbuleLeft}>
-              <TypingAnimation />
+            <View style={messageBubbleLeft}>
+              <TypingAnimation color={leftText.color as string} />
             </View>
           )}
 
@@ -184,22 +215,38 @@ const ChatModal = () => {
             {Boolean(buttons?.length) &&
               buttons?.map((button) => (
                 <TouchableOpacity
-                  style={styles.buttonFunction}
+                  style={[
+                    styles.buttonFunction,
+                    { backgroundColor: theme?.messageActionWrapper },
+                  ]}
                   onPress={() => {
                     button.onPress();
                     handleCloseChat();
                   }}
                 >
-                  <Text style={styles.messageActionText}>{button.label}</Text>
+                  <Text
+                    style={[
+                      styles.messageActionText,
+                      { color: theme?.messageActionText },
+                    ]}
+                  >
+                    {button.label}
+                  </Text>
                 </TouchableOpacity>
               ))}
           </View>
         </ScrollView>
 
         <KeyboardAvoidingView behavior="padding">
-          <View style={styles.message}>
+          <View
+            style={[styles.message, { backgroundColor: theme?.bottomWrapper }]}
+          >
             <TextInput
-              style={styles.messageInput}
+              style={[
+                styles.messageInput,
+                { backgroundColor: theme?.textFieldBackground },
+                { color: theme?.textFieldColor },
+              ]}
               placeholder="Como te puedo ayudar?"
               value={message}
               onChangeText={setMessage}
@@ -333,7 +380,6 @@ const styles = StyleSheet.create({
   },
   assistantName: {
     fontSize: 24,
-    color: "#FFFFFF",
   },
   assistantStatus: {
     flexDirection: "column",

@@ -1,7 +1,35 @@
+export type Theme = {
+    chat?: {
+        header?: string;
+        headerText?: string;
+
+        background?: string;
+
+        textLeft?: string;
+        textRight?: string;
+        messageBubbleLeft?: string;
+        messageBubbleRight?: string;
+
+        messageActionWrapper?: string;
+        messageActionText?: string;
+
+        textFieldBackground?: string;
+        textFieldColor?: string;
+
+        bottomWrapper?: string;
+    },
+    bubble?: {
+        background?: string;
+        icon?: string;
+    }
+}
+
 export type AssistantOptions = {
     name: string;
-    avatar?: string;
     apiKey: string;
+    language?: string;
+    theme?: Theme;
+    avatar?: string;
     model?: string;
     temperature?: number;
     maxTokens?: number;

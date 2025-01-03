@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, View, StyleSheet } from "react-native";
 
-const TypingAnimation = () => {
+const TypingAnimation = ({color}: {color: string}) => {
   const dot1Opacity = useRef(new Animated.Value(0)).current;
   const dot2Opacity = useRef(new Animated.Value(0)).current;
   const dot3Opacity = useRef(new Animated.Value(0)).current;
@@ -34,9 +34,9 @@ const TypingAnimation = () => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.dot, { opacity: dot1Opacity }]} />
-      <Animated.View style={[styles.dot, { opacity: dot2Opacity }]} />
-      <Animated.View style={[styles.dot, { opacity: dot3Opacity }]} />
+      <Animated.View style={[styles.dot, { opacity: dot1Opacity }, {backgroundColor: color}]} />
+      <Animated.View style={[styles.dot, { opacity: dot2Opacity }, {backgroundColor: color}]} />
+      <Animated.View style={[styles.dot, { opacity: dot3Opacity }, {backgroundColor: color}]} />
     </View>
   );
 };
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: "gray",
     marginHorizontal: 5,
   },
 });
