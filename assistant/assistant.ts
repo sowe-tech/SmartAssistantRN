@@ -55,8 +55,6 @@ class HelpAI {
         ...options.theme?.bubble,
       },
     };
-
-    console.error(this._theme);
   }
 
   addHelper(
