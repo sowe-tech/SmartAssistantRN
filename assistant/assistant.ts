@@ -1,6 +1,15 @@
 import { theme } from "./theme";
-import { AssistantOptions, MessagesType, RoutesAI, Theme } from "./types";
+import { AssistantOptions, MessagesType, OpenAIModel, RoutesAI, Theme } from "./types";
 import OpenAI from "openai";
+
+const defaultAiModel: OpenAIModel = {
+  model: "gpt-4o",
+  temperature: 0.7,
+  maxTokens: 1000,
+  topP: 1,
+  frequencyPenalty: 0,
+  presencePenalty: 0,
+};
 
 class HelpAI {
   options: AssistantOptions;
@@ -20,6 +29,8 @@ class HelpAI {
   _firstMessage: string;
 
   _theme: Theme;
+
+  _modelSettings: OpenAIModel;
 
   constructor(options: AssistantOptions) {
     this.options = options;
@@ -47,7 +58,9 @@ class HelpAI {
     
     You will need to communicate in the ${language} language.`;
 
-    this._firstMessage = options.firstMessage || `Hello! I'm ${options.name}, your personal assistant. I'm here to answer your questions and help you navigate the app, guiding you to the right screen or providing the information you need. How can I assist you today?`;
+    this._firstMessage =
+      options.firstMessage ||
+      `Hello! I'm ${options.name}, your personal assistant. I'm here to answer your questions and help you navigate the app, guiding you to the right screen or providing the information you need. How can I assist you today?`;
 
     this._theme = {
       chat: {
@@ -58,6 +71,11 @@ class HelpAI {
         ...theme.bubble,
         ...options.theme?.bubble,
       },
+    };
+
+    this._modelSettings = {
+      ...defaultAiModel,
+      ...options.modelSettings,
     };
   }
 
