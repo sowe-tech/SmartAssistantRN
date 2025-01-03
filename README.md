@@ -9,6 +9,8 @@
 - **User Attribute Access**: Access and utilize user-specific attributes to personalize interactions.
 - **Dynamic Button Generation**: Create and display buttons dynamically based on the context of the conversation.
 
+<img src="https://github.com/user-attachments/assets/6fa5e16f-1256-452f-b832-90150c1e056f" alt="Mobile Phone Image" width="300" />
+
 ## Installation
 
 1. Install the `react-native-smart-assistant` package:
