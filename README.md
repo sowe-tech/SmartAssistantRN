@@ -131,6 +131,27 @@ assistant.addHelper(
 );
 ```
 
+The assitant also alows handling multiple functions at once!
+
+<div style="display:flex;">
 <img src="https://github.com/user-attachments/assets/f39cd00c-f6f7-447e-beb9-160b04568256" alt="Mobile Phone Image" width="300" />
+<img src="https://github.com/user-attachments/assets/eb3f083c-33fd-47a8-80eb-249fb1fc3525" alt="Mobile Phone Image" width="300" />
+</div>
 
+## User Attributes
+The AI assistant can identify when a user needs to access personal details and uses them to create an answer.
 
+### Example Usage
+
+```javascript
+assistant.addAttribute(
+  "personalDetails",
+  {
+    name: "Corrado",
+    age: 23,
+    gender: "male",
+    email: "hello@sowe.tech",
+  },
+  "User personal details, name, age, gender and email"
+);
+```
