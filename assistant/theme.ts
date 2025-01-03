@@ -4,7 +4,7 @@ export const theme: Theme = {
   chat: {
     header: "#2f2f2f",
     headerText: "#FFFFFF",
-    background: "#2f2f2f",
+    background: "#FFFFFF",
     textLeft: "#2f2f2f",
     textRight: "#ffffff",
     messageBubbleLeft: "#dbdbdb",
