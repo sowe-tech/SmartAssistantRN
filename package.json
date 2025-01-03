@@ -1,6 +1,6 @@
 {
   "name": "react-native-smart-assistant",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A React Native library for integrating an OpenAI-powered chatbot assistant into your app. Offers features for navigation guidance, user attribute access, and dynamic button generation to enhance app usability.",
   "main": "index.ts",
   "scripts": {

@@ -143,7 +143,7 @@ The AI assistant can identify when a user needs to execute a predefined function
 
 ```javascript
 assistant.addHelper(
-  "contcatHuman", // unique function name
+  "contactSupport", // unique name of the function
   () => {
     // Logic to contact support
     Alert.alert(
