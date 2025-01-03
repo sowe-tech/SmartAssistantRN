@@ -188,7 +188,7 @@ const ChatModal = () => {
           onContentSizeChange={() =>
             scrollViewRef.current?.scrollToEnd({ animated: true })
           }
-          style={{ flex: 1, gap: 12, backgroundColor: "#ffffff" }}
+          style={{ flex: 1, gap: 12, backgroundColor: theme?.background }}
           ref={scrollViewRef}
         >
           {messages.map((m) => (
@@ -383,7 +383,6 @@ const styles = StyleSheet.create({
   },
   assistantStatus: {
     flexDirection: "column",
-    alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 12,
     paddingVertical: 8,
