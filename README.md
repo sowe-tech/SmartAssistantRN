@@ -86,6 +86,38 @@ The following table describes the configuration options for the assistant:
 
 ________________________
 
+## AI Model Configuration  
+
+The following table describes the properties for configuring the AI model:
+
+| Property            | Description                                              | Type        | Required | Default Value |
+|---------------------|----------------------------------------------------------|-------------|----------|---------------|
+| `model`             | The specific model to use for the AI. E.g., `gpt-4o`      | `string`    | Yes      | `"gpt-4o"`    |
+| `temperature`       | Controls the randomness of the AI's responses. Lower is more focused, higher is more random | `number`    | No       | `0.7`         |
+| `maxTokens`         | The maximum number of tokens (words) the AI will generate | `number`    | No       | `1000`        |
+| `topP`              | Controls the diversity of the AI's responses. Higher is more diverse | `number`    | No       | `1`           |
+| `frequencyPenalty`  | Penalizes the AI for using common words or phrases too often | `number`    | No       | `0`           |
+| `presencePenalty`   | Penalizes the AI for repeating the same content         | `number`    | No       | `0`           |
+
+### Notes:
+- The `model` property specifies which OpenAI model to use. For example, `gpt-4o`.
+- `temperature` and `topP` control the creativity and randomness of the model's output. A value closer to `1` increases randomness, while a value closer to `0` makes the AI's responses more deterministic.
+- `maxTokens` controls how long the model's responses can be, measured in tokens (which roughly equate to words).
+
+### Usage
+
+```javascript
+const assistant = new Assistant({
+  modelSettings: {
+    model: "gpt-3.5-turbo", // Specify your desired model
+  },
+  name: "Sowe", // Name of the assistant
+  // Other settings...
+});
+```
+
+________________________
+
 ## `useAssistant` Hook
 
 The `useAssistant` hook is designed to provide advanced control and interaction with the Smart Assistant in your application. It allows you to manage and send messages, handle user interactions, and execute custom assistant functions based on the user's actions.
