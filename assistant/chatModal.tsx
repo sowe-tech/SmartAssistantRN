@@ -247,7 +247,6 @@ const ChatModal = () => {
                 { backgroundColor: theme?.textFieldBackground },
                 { color: theme?.textFieldColor },
               ]}
-              placeholder="Como te puedo ayudar?"
               value={message}
               onChangeText={setMessage}
               multiline
