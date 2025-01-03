@@ -1,6 +1,6 @@
-# SmartAssistantRN
+# React Native Smart Assistant
 
-SmartAssistantRN is a React Native library that integrates an OpenAI-powered chatbot assistant into your application. It enhances app usability by providing features such as navigation guidance, user attribute access, and dynamic button generation.
+`SmartAssistantRN` is a React Native library that integrates an OpenAI-powered chatbot assistant into your application. It enhances app usability by providing features such as navigation guidance, user attribute access, and dynamic button generation.
 
 ## Features
 
