@@ -137,7 +137,7 @@ const useAssistant = () => {
         completion.choices[0].message.tool_calls &&
         completion.choices[0].message.tool_calls.length > 0
       ) {
-        handleActions(message, completion.choices[0].message.tool_calls);
+        await handleActions(message, completion.choices[0].message.tool_calls);
         return completion.choices[0].message.content;
       }
 
