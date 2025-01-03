@@ -43,7 +43,7 @@ const AiHelperProvider = ({
   children: any;
   assistant: HelpAI;
 }) => {
-  const firstMessage = `¡Hola! Soy ${assistant?.options.name}, tu asistente personal. Estoy aquí para resolver tus dudas y ayudarte a navegar por la app, guiándote a la pantalla correcta o brindándote la información que necesitas. ¿En qué puedo ayudarte hoy?`;
+  const firstMessage = assistant._firstMessage;
 
   const [messages, setMessages] = useState<
     OpenAI.Chat.Completions.ChatCompletionMessageParam[]

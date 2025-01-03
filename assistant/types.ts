@@ -27,6 +27,7 @@ export type Theme = {
 export type AssistantOptions = {
     name: string;
     apiKey: string;
+    firstMessage?: string;
     language?: string;
     theme?: Theme;
     avatar?: string;

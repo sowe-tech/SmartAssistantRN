@@ -17,6 +17,8 @@ class HelpAI {
   };
   _executable_functions: string[];
 
+  _firstMessage: string;
+
   _theme: Theme;
 
   constructor(options: AssistantOptions) {
@@ -44,6 +46,8 @@ class HelpAI {
     Your goal is to ensure a smooth, fast, and efficient experience for the user within the context of the application.
     
     You will need to communicate in the ${language} language.`;
+
+    this._firstMessage = options.firstMessage || `Hello! I'm ${options.name}, your personal assistant. I'm here to answer your questions and help you navigate the app, guiding you to the right screen or providing the information you need. How can I assist you today?`;
 
     this._theme = {
       chat: {
