@@ -1,25 +1,23 @@
-import {
-  AssistantOptions,
-  MessagesType,
-  RoutesAI,
-} from "./types";
+import { theme } from "./theme";
+import { AssistantOptions, MessagesType, RoutesAI, Theme } from "./types";
 import OpenAI from "openai";
 
 class HelpAI {
   options: AssistantOptions;
-  _messages_prompt: MessagesType[];
+
   _openai: OpenAI;
 
-  _route_tools: OpenAI.Chat.Completions.ChatCompletionTool | undefined;
+  _system_prompt: string;
+  _messages_prompt: MessagesType[];
 
+  _route_tools: OpenAI.Chat.Completions.ChatCompletionTool | undefined;
   _helper_toools: OpenAI.Chat.Completions.ChatCompletionTool[];
   _functions_dict: {
     [key: string]: (args: any) => Promise<any>;
   };
-
   _executable_functions: string[];
 
-  _system_prompt: string;
+  _theme: Theme;
 
   constructor(options: AssistantOptions) {
     this.options = options;
@@ -46,6 +44,19 @@ class HelpAI {
     Your goal is to ensure a smooth, fast, and efficient experience for the user within the context of the application.
     
     You will need to communicate in the ${language} language.`;
+
+    this._theme = {
+      chat: {
+        ...theme.chat,
+        ...options.theme?.chat,
+      },
+      bubble: {
+        ...theme.bubble,
+        ...options.theme?.bubble,
+      },
+    };
+
+    console.error(this._theme);
   }
 
   addHelper(

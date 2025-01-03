@@ -118,7 +118,7 @@ const useAssistant = () => {
         messages: [
           {
             role: "system",
-            content: openai._system_prompt,
+            content: assistant?._system_prompt,
           },
           ...messages,
           {
