@@ -24,20 +24,25 @@ export type Theme = {
     }
 }
 
-export type AssistantOptions = {
-    name: string;
-    apiKey: string;
-    firstMessage?: string;
-    language?: string;
-    theme?: Theme;
-    avatar?: string;
-    model?: string;
+export type OpenAIModel = {
+    model: string;
     temperature?: number;
     maxTokens?: number;
     topP?: number;
     frequencyPenalty?: number;
     presencePenalty?: number;
 }
+
+export type AssistantOptions = {
+    name: string;
+    apiKey: string;
+    firstMessage?: string;
+    language?: string;
+    avatar?: string;
+    theme?: Theme;
+    modelSettings?: OpenAIModel;
+}
+
 
 export type RouteAI = {
     route_name: string,

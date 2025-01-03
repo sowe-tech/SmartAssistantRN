@@ -49,11 +49,14 @@ const useAssistant = () => {
       }
     });
 
-    console.log(tool_calls);
-
     // Solicitar a la IA generar un mensaje de feedback basado en el resultado
     const feedbackCompletion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: assistant?._modelSettings.model,
+      temperature: assistant?._modelSettings.temperature,
+      max_tokens: assistant?._modelSettings.maxTokens,
+      top_p: assistant?._modelSettings.topP,
+      frequency_penalty: assistant?._modelSettings.frequencyPenalty,
+      presence_penalty: assistant?._modelSettings.presencePenalty,
       store: true,
       messages: [
         {
@@ -115,7 +118,12 @@ const useAssistant = () => {
 
     try {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o",
+        model: assistant?._modelSettings.model,
+        temperature: assistant?._modelSettings.temperature,
+        max_tokens: assistant?._modelSettings.maxTokens,
+        top_p: assistant?._modelSettings.topP,
+        frequency_penalty: assistant?._modelSettings.frequencyPenalty,
+        presence_penalty: assistant?._modelSettings.presencePenalty,
         store: true,
         messages: [
           {
